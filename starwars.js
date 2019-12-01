@@ -5,10 +5,9 @@ var App = function(){
 
  const response = await fetch('https://swapi.co/api/people/')
  let personas = await response.json()
- console.log(personas.results)
- return personas.results.map(j => j.height >= 120)
+ return personas.results.filter(j => j.height >= 120).map(k => k.name)
 };
       
  const app = new App();
  console.log('names')
- console.log(app.getallPeople());
+ app.getallPeople().then(data => console.log(data))
